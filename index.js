@@ -61,9 +61,9 @@ connectToWA()
 } else if (connection === 'open') {
 console.log('👾 Installing... ')
 const path = require('path');
-fs.readdirSync("./QUEEN/plugins").forEach((plugin) => {
+fs.readdirSync("./QUEEN/plugins/").forEach((plugin) => {
 if (path.extname(plugin).toLowerCase() == ".js") {
-require("./QUEEN/plugins" + plugin);
+require("./QUEEN/plugins/" + plugin);
 }
 });
 console.log('Plugins installed successful 🔌')
@@ -148,7 +148,7 @@ conn.sendFileUrl = async (jid, url, caption, quoted, options = {}) => {
             
 
                
-const events = require('./command')
+const events = require('./QUEEN/command')
 const cmdName = isCmd ? body.slice(1).trim().split(" ")[0].toLowerCase() : false;
 if (isCmd) {
 const cmd = events.commands.find((cmd) => cmd.pattern === (cmdName)) || events.commands.find((cmd) => cmd.alias && cmd.alias.includes(cmdName))
